@@ -1,0 +1,795 @@
+/* ===================== GLOBAL STYLES ===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-rgb: 230, 57, 70;
+    --primary-blue: rgb(29, 53, 87);
+    --accent-gold: rgb(255, 209, 102);
+    --accent-teal: rgb(6, 214, 160);
+    --dark-bg: rgb(13, 27, 42);
+    --light-bg: rgb(248, 249, 250);
+    --text-dark: rgb(33, 37, 41);
+    --text-light: rgb(108, 117, 125);
+    --text-white: rgb(255, 255, 255);
+    --card-bg: rgb(255, 255, 255);
+    --border-color: rgb(233, 236, 239);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --gradient-primary: linear-gradient(135deg, rgb(230, 57, 70) 0%, rgb(255, 107, 107) 100%);
+    --gradient-blue: linear-gradient(135deg, rgb(29, 53, 87) 0%, rgb(42, 77, 143) 100%);
+    --gradient-gold: linear-gradient(135deg, rgb(255, 209, 102) 0%, rgb(255, 179, 71) 100%);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--light-bg);
+    overflow-x: hidden;
+}
+
+/* ===================== TOP BANNER ===================== */
+.top-banner {
+    background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.95), rgba(29, 53, 87, 0.95));
+    color: var(--text-white);
+    padding: 8px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    position: relative;
+    z-index: 1000;
+}
+
+.top-banner-left {
+    display: flex;
+    gap: 25px;
+}
+
+.top-banner-right {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.top-banner a {
+    color: var(--text-white);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.top-banner a:hover {
+    color: var(--accent-gold);
+    transform: translateY(-1px);
+}
+
+/* ===================== ANIMATED CARBUY HEADER ===================== */
+header {
+    background: var(--gradient-blue);
+    color: var(--text-white);
+    padding: 15px 30px;
+    box-shadow: var(--shadow-md);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 3px solid var(--accent-gold);
+    min-height: 140px;
+    justify-content: center;
+}
+
+header h1 {
+    font-size: 2.8rem;
+    margin: 0;
+    letter-spacing: 1px;
+    font-weight: 900;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Colorful animated Carbuy letters */
+header h1 span {
+    display: inline-block;
+    animation: colorfulBounce 0.8s ease-out forwards;
+    position: relative;
+    padding: 0 1px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes colorfulBounce {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.8) rotate(-10deg);
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(5px) scale(1.1) rotate(5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1) rotate(0deg);
+    }
+}
+
+/* Different colors for each letter */
+header h1 span.C { animation-delay: 0s; color: rgb(230, 57, 70); }
+header h1 span.a { animation-delay: 0.1s; color: rgb(255, 209, 102); }
+header h1 span.r { animation-delay: 0.2s; color: rgb(6, 214, 160); }
+header h1 span.b { animation-delay: 0.3s; color: rgb(77, 150, 255); }
+header h1 span.u { animation-delay: 0.4s; color: rgb(255, 179, 71); }
+header h1 span.y { animation-delay: 0.5s; color: rgb(230, 57, 70); }
+
+header h1 span.auctions {
+    margin-left: 12px;
+    color: var(--accent-gold);
+    animation-delay: 0.6s;
+    font-size: 1.8rem;
+    vertical-align: middle;
+}
+
+header h1 span:hover {
+    animation: letterGlow 0.5s ease;
+    transform: scale(1.2);
+}
+
+@keyframes letterGlow {
+    0% { text-shadow: 0 0 5px currentColor; }
+    50% { text-shadow: 0 0 15px currentColor; }
+    100% { text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3); }
+}
+
+/* ===================== HEADER SEARCH ===================== */
+.cookbook-search {
+    max-width: 500px;
+    margin: 10px auto 0;
+    width: 100%;
+    position: relative;
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: block !important;
+}
+
+/* CHANGED: Black border, visible typed text */
+.cookbook-search input[type="text"] {
+    width: 100%;
+    padding: 12px 20px 12px 45px;
+    border: 2px solid black !important; /* BLACK BORDER */
+    border-radius: 30px;
+    font-size: 0.95rem;
+    background: white !important; /* White background for contrast */
+    color: black !important; /* BLACK TYPED TEXT - ALWAYS VISIBLE */
+    transition: all 0.3s ease;
+    caret-color: black; /* Black blinking cursor */
+}
+
+.cookbook-search input[type="text"]::placeholder {
+    color: rgba(0, 0, 0, 0.6); /* Darker placeholder */
+    font-weight: 500;
+}
+
+.cookbook-search input[type="text"]:focus {
+    outline: none;
+    background: white !important;
+    border-color: rgb(230, 57, 70) !important; /* Red border on focus */
+    box-shadow: 0 0 15px rgba(230, 57, 70, 0.3);
+    color: black !important; /* Keep text black when focused */
+}
+
+/* CHANGED: Black search icon */
+.cookbook-search button {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: black !important; /* BLACK SEARCH ICON */
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 1; /* Fully visible */
+    visibility: visible !important;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cookbook-search button:hover {
+    color: rgb(230, 57, 70) !important; /* Red on hover */
+    opacity: 1;
+    transform: translateY(-50%) scale(1.1);
+}
+
+/* Remove the subtle glow animation since we want solid black */
+.cookbook-search {
+    /* Removed the glow animation for solid look */
+}
+
+.cookbook-search[style*="display: none"],
+.cookbook-search[style*="visibility: hidden"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* ===================== NAVIGATION ===================== */
+nav {
+    background: var(--card-bg);
+    padding: 0;
+    box-shadow: var(--shadow-sm);
+    border-bottom: 1px solid var(--border-color);
+}
+
+nav .navbar {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 0;
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav .navbar li {
+    margin: 0;
+}
+
+nav .navbar a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-dark);
+    text-decoration: none;
+    padding: 12px 20px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: capitalize;
+    border-bottom: 3px solid transparent;
+}
+
+nav .navbar a:hover,
+nav .navbar a.active {
+    color: rgb(var(--primary-rgb));
+    border-bottom-color: rgb(var(--primary-rgb));
+    background-color: rgba(var(--primary-rgb), 0.05);
+}
+
+/* ===================== MAIN CONTENT ===================== */
+main {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px;
+    min-height: 60vh;
+}
+
+/* ===================== CATALOG INTRO ===================== */
+.catalog-intro {
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0.9));
+    margin-bottom: 30px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.catalog-intro h2 {
+    font-size: 2rem;
+    color: rgb(var(--primary-rgb));
+    margin-bottom: 15px;
+    font-weight: 800;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.catalog-intro h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--gradient-gold);
+    border-radius: 2px;
+}
+
+.decorative-border {
+    height: 4px;
+    background: var(--gradient-gold);
+    margin: 25px 0;
+    border-radius: 2px;
+    opacity: 0.8;
+}
+
+/* ===================== COOKBOOK CATALOG GRID ===================== */
+.cookbook-catalog {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 20px 0;
+}
+
+/* ===================== FIXED SIZE CAR CARDS ===================== */
+.cookbook-item {
+    background: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all 0.4s ease;
+    border: 1px solid var(--border-color);
+    position: relative;
+    animation: fadeInUp 0.6s ease-out;
+    height: 500px; /* FIXED HEIGHT */
+    display: flex;
+    flex-direction: column;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.cookbook-item:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-5px);
+    border-color: rgb(var(--primary-rgb));
+}
+
+/* FIXED IMAGE CONTAINER - NO VARIATION */
+.cookbook-image {
+    width: 100%;
+    height: 180px; /* SMALLER FIXED HEIGHT */
+    overflow: hidden;
+    position: relative;
+    background: rgb(245, 247, 250);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+/* SMALL, CENTERED, UNIFORM IMAGES */
+.cookbook-image img {
+    max-width: 85%; /* Smaller width */
+    max-height: 85%; /* Smaller height */
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+.cookbook-item:hover .cookbook-image img {
+    transform: scale(1.05); /* Minimal zoom */
+}
+
+/* Category Ribbon */
+.item-category {
+    position: absolute;
+    top: 10px;
+    right: -30px;
+    background: rgb(var(--primary-rgb));
+    color: var(--text-white);
+    padding: 4px 30px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transform: rotate(45deg);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Badges */
+.featured-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: var(--gradient-gold);
+    color: rgb(33, 37, 41);
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    border-radius: 12px;
+    z-index: 1;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.featured-badge.auction-ended {
+    background: var(--gradient-primary);
+    color: var(--text-white);
+}
+
+/* Card Content */
+.cookbook-content {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.cookbook-content h3 {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+    font-weight: 700;
+    line-height: 1.3;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-description {
+    color: var(--text-light);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    flex-grow: 1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+/* Price Display - NEPALI RUPEE STYLING */
+.item-price {
+    font-size: 1.5rem;
+    color: rgb(var(--primary-rgb));
+    font-weight: 900;
+    margin: 10px 0;
+    padding: 8px 0;
+    border-top: 1px dashed var(--border-color);
+    border-bottom: 1px dashed var(--border-color);
+}
+
+/* NEPALI RUPEE SYMBOL STYLING */
+.item-price::before {
+    content: 'रु'; /* Nepali Rupee symbol */
+    font-size: 1rem;
+    font-weight: bold;
+    margin-right: 4px;
+    vertical-align: baseline;
+    color: rgb(0, 100, 0); /* Slightly green for currency */
+}
+
+/* Item Details */
+.item-details {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.detail-item {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.detail-item i {
+    font-size: 0.9rem;
+    color: rgb(var(--primary-rgb));
+}
+
+/* Action Button */
+.auction-action {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: var(--gradient-primary);
+    color: var(--text-white);
+    border: none;
+    border-radius: 5px;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    text-align: center;
+    margin-top: auto;
+}
+
+.auction-action:hover {
+    background: linear-gradient(135deg, rgb(214, 40, 40) 0%, rgb(255, 82, 82) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(var(--primary-rgb), 0.3);
+}
+
+/* ===================== VIEW ALL BUTTON ===================== */
+.view-all {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.view-all-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 30px;
+    background: var(--gradient-blue);
+    color: var(--text-white);
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.view-all-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(29, 53, 87, 0.3);
+}
+
+/* ===================== CATEGORIES GRID ===================== */
+.featured-categories {
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px solid var(--border-color);
+}
+
+.featured-categories h2 {
+    text-align: center;
+    color: rgb(var(--primary-rgb));
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    font-weight: 800;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.category-item {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0.9));
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 25px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.category-item:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgb(var(--primary-rgb));
+}
+
+.category-icon {
+    font-size: 2.2rem;
+    color: rgb(var(--primary-rgb));
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(var(--primary-rgb), 0.1);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.category-item h4 {
+    color: var(--text-dark);
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 700;
+}
+
+/* ===================== NO AUCTIONS ===================== */
+.no-auctions {
+    text-align: center;
+    padding: 50px 30px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0.9));
+    border-radius: 10px;
+    border: 2px dashed var(--border-color);
+    margin: 30px 0;
+}
+
+.no-auctions h3 {
+    color: rgb(var(--primary-rgb));
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+/* ===================== FORMS ===================== */
+form {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+    margin: 30px 0;
+    border: 1px solid var(--border-color);
+}
+
+main > form {
+    max-width: 450px;
+    margin: 40px auto;
+}
+
+form h2 {
+    margin: 0 0 25px 0;
+    color: rgb(var(--primary-rgb));
+    font-size: 1.6rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background-color: rgba(248, 249, 250, 0.5);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: rgb(var(--primary-rgb));
+    box-shadow: 0 0 0 3px rgba(var(--primary-rgb), 0.1);
+}
+
+input[type="submit"] {
+    background: var(--gradient-primary);
+    color: var(--text-white);
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+    width: 100%;
+}
+
+input[type="submit"]:hover {
+    background: linear-gradient(135deg, rgb(214, 40, 40) 0%, rgb(255, 82, 82) 100%);
+    transform: translateY(-2px);
+}
+
+/* ===================== FOOTER ===================== */
+footer {
+    background: linear-gradient(135deg, rgba(29, 53, 87, 0.95), rgba(13, 27, 42, 0.95));
+    color: var(--text-white);
+    text-align: center;
+    padding: 25px;
+    margin-top: 50px;
+    border-top: 3px solid var(--accent-gold);
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+    .cookbook-catalog {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    
+    .cookbook-item {
+        height: 480px;
+    }
+    
+    .cookbook-image {
+        height: 160px;
+    }
+    
+    .cookbook-image img {
+        max-width: 80%;
+        max-height: 80%;
+    }
+    
+    .cookbook-search {
+        max-width: 400px;
+    }
+    
+    .cookbook-search input[type="text"] {
+        padding: 10px 15px 10px 40px;
+        font-size: 0.9rem;
+    }
+    
+    .cookbook-search button {
+        left: 12px;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cookbook-catalog {
+        grid-template-columns: 1fr;
+    }
+    
+    .cookbook-item {
+        height: 460px;
+    }
+    
+    .cookbook-image {
+        height: 150px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    header h1 span.auctions {
+        font-size: 1.4rem;
+    }
+    
+    .cookbook-search {
+        max-width: 100%;
+        margin: 10px 0 0 0;
+    }
+    
+    .cookbook-search input[type="text"] {
+        padding: 10px 15px 10px 40px;
+        font-size: 0.85rem;
+    }
+    
+    .cookbook-search button {
+        left: 10px;
+        font-size: 1rem;
+    }
+}
