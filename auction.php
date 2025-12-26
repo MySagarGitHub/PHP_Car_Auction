@@ -94,6 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['bid']) && isset($_SES
             $bidSuccess = "Bid placed successfully!";
             header("Location: auction.php?id=$auctionId");
             exit;
+            
         } catch (PDOException $e) {
             $bidError = "Error placing bid: " . $e->getMessage();
         }
